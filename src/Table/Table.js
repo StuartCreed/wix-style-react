@@ -119,7 +119,10 @@ export class Table extends React.Component {
   renderChildren() {
     const { children, withWrapper, onRowClick, dataHook } = this.props;
     return withWrapper ? (
-      <div data-hook={dataHook} {...style('root', onRowClick, this.props)}>
+      <div
+        data-hook={dataHook}
+        {...style('root', { isRowClickable: !!onRowClick }, this.props)}
+      >
         {children}
       </div>
     ) : (
