@@ -342,7 +342,7 @@ class DataTable extends React.Component {
   };
 
   renderCell = (rowData, column, rowNum, colNum) => {
-    const { virtualized, stickyColumns, columns, onRowClick } = this.props;
+    const { virtualized, stickyColumns, columns } = this.props;
 
     const classes = classNames({
       [this.style.important]: column.important,
