@@ -17,19 +17,27 @@ class TableStickyScrollExample extends React.Component {
   );
 
   render() {
+
+    const columnsArr = this.range(this.columnCount).map(columnIndex => ({
+      title: `Column ${columnIndex}`,
+      render: row => row[`value${columnIndex}`],
+      width: 150,
+    }))
+      .concat({
+        title: '',
+        width: 100,
+        stickyActionCell: true,
+        render: () => (
+          <TableActionCell primaryAction={{ text: 'Edit' }} />
+        )});
+
     return (
       <Table
         horizontalScroll
         stickyColumns={2}
         showSelection
         data={this.data}
-        columns={
-          this.range(this.columnCount).map(columnIndex => ({
-            title: `Column ${columnIndex}`,
-            render: row => row[`value${columnIndex}`],
-            width: 150,
-          }))
-        }
+        columns={columnsArr}
       >
         <Table.Content />
       </Table>

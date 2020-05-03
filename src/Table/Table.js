@@ -119,10 +119,7 @@ export class Table extends React.Component {
   renderChildren() {
     const { children, withWrapper, onRowClick, dataHook } = this.props;
     return withWrapper ? (
-      <div
-        data-hook={dataHook}
-        {...style('root', { isRowClickable: !!onRowClick }, this.props)}
-      >
+      <div data-hook={dataHook} {...style('root', onRowClick, this.props)}>
         {children}
       </div>
     ) : (
@@ -277,6 +274,7 @@ Table.propTypes = {
    *    * `align`: Sets the alignment of the column content
    *    * `width`: CSS value to set the width to use for this column. No value means column will try to contain its children, if possible
    *    * `important`: Sets whether font color of the column should be stronger, more dominant
+   *    * `stickyActionCell`: Sets the `<TableActionCell/>` to be sticky to the right.
    *    */
   columns: PropTypes.arrayOf(
     PropTypes.shape({
@@ -290,6 +288,7 @@ Table.propTypes = {
       align: PropTypes.oneOf(['start', 'center', 'end']),
       width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       important: PropTypes.bool,
+      stickyActionCell: PropTypes.bool,
     }),
   ).isRequired,
   /** A func that gets row data and returns a class(es) to apply to that specific row */

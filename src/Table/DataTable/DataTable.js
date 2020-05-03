@@ -342,7 +342,8 @@ class DataTable extends React.Component {
   };
 
   renderCell = (rowData, column, rowNum, colNum) => {
-    const { virtualized, stickyColumns, columns } = this.props;
+    const { virtualized, stickyColumns, columns, onRowClick } = this.props;
+
     const classes = classNames({
       [this.style.important]: column.important,
       [this.style.largeVerticalPadding]:
@@ -355,6 +356,7 @@ class DataTable extends React.Component {
       [this.style.alignEnd]: column.align === 'end',
       [this.style.sticky]: colNum < stickyColumns,
       [this.style.lastSticky]: colNum === stickyColumns - 1,
+      [this.style.stickyActionCell]: column.stickyActionCell,
     });
 
     const width =
