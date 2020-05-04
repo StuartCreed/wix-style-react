@@ -642,7 +642,7 @@ DataTable.propTypes = {
       sortDescending: PropTypes.bool,
       align: PropTypes.oneOf(['start', 'center', 'end']),
       important: PropTypes.bool,
-      style: PropTypes.object,
+      style: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
       width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
       stickyActionCell: PropTypes.bool,
     }),
