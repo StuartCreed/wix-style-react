@@ -580,6 +580,7 @@ class TableHeader extends Component {
   };
 
   render() {
+    debugger;
     return (
       <thead>
         <tr>{this.props.columns.map(this.renderHeaderCell)}</tr>
@@ -640,6 +641,10 @@ DataTable.propTypes = {
       infoTooltipProps: PropTypes.shape(TooltipCommonProps),
       sortDescending: PropTypes.bool,
       align: PropTypes.oneOf(['start', 'center', 'end']),
+      important: PropTypes.bool,
+      style: PropTypes.object,
+      width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      stickyActionCell: PropTypes.bool,
     }),
   ).isRequired,
   /** Should the table show the header when data is empty */
