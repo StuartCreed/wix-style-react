@@ -580,7 +580,6 @@ class TableHeader extends Component {
   };
 
   render() {
-    debugger;
     return (
       <thead>
         <tr>{this.props.columns.map(this.renderHeaderCell)}</tr>
