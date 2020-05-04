@@ -61,4 +61,5 @@ export type DataTableColumn<RowData = RowDataDefaultType> = {
   style?: React.CSSProperties;
   infoTooltipProps?: PopoverCommonProps;
   align?: DataTableColumnAlign;
+  stickyActionCell?: boolean;
 };
