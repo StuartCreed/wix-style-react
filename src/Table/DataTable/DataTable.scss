@@ -306,7 +306,32 @@ $cellHorizontalEdgePadding: 30px;
   }
 }
 
+/* sticky action cell */
 .stickyActionCell {
   position: sticky;
   right: 0;
+}
+
+.stickyActionCell [data-hook="table-action-cell-placeholder"] {
+   display: none;
+}
+
+.table {
+  tr:hover {
+    .stickyActionCell {
+        background-color: $D80;
+    }
+
+    .clickableDataRow:hover {
+      .stickyActionCell {
+          background-color: $B50;
+      }
+    }
+  }
+
+  tr:hover.highlight{
+    .stickyActionCell {
+      background-color: $B60;
+    }
+  }
 }
