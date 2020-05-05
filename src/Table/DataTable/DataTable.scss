@@ -312,8 +312,7 @@ $cellHorizontalEdgePadding: 30px;
   right: 0;
 }
 
-.stickyActionCell
-[data-hook="table-action-cell-placeholder"] {
+.stickyActionCell [data-hook="table-action-cell-placeholder"] {
    display: none;
 }
 

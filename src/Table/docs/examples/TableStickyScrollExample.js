@@ -25,7 +25,7 @@ class TableStickyScrollExample extends React.Component {
     }))
       .concat({
         title: '',
-        width: 100,
+        width: 150,
         stickyActionCell: true,
         render: () => (
           <TableActionCell

@@ -453,7 +453,7 @@ const tests = [
           data: horizontalScrollData,
           columns: horizontalScrollColumns.concat({
             title: '',
-            width: 100,
+            width: 150,
             stickyActionCell: true,
             render: () => (
               <TableActionCell
