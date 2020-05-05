@@ -312,8 +312,13 @@ $cellHorizontalEdgePadding: 30px;
   right: 0;
 }
 
-.stickyActionCell [data-hook="table-action-cell-placeholder"] {
+.stickyActionCell
+[data-hook="table-action-cell-placeholder"] {
    display: none;
+}
+
+.stickyActionCell [data-hook="table-action-cell-popover-menu"] {
+  visibility: hidden;
 }
 
 .table {
@@ -326,6 +331,10 @@ $cellHorizontalEdgePadding: 30px;
       .stickyActionCell {
           background-color: $B50;
       }
+    }
+
+    .stickyActionCell [data-hook="table-action-cell-popover-menu"] {
+      visibility: visible;
     }
   }
 

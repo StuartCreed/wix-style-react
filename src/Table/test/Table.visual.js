@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
-import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import {
+  testkitFactoryCreator,
+  uniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/vanilla';
 
 import Table from '..';
+import TableActionCell from '../../TableActionCell';
+import Star from 'wix-ui-icons-common/Star';
 import { tablePrivateDriverFactory } from '../Table.private.driver';
 import Card from '../../Card';
 import Checkbox from '../../Checkbox';
@@ -14,6 +19,7 @@ import {
   ToolbarWithBulSelectionCheckboxExample,
   EmptyStateExample,
 } from './testExamples';
+import { TableActionCellPrivateDriverFactory } from '../../TableActionCell/test/TableActionCell.private.uni.driver';
 
 const { dataHook } = storySettings;
 
@@ -74,6 +80,14 @@ const createDriver = () =>
   tablePrivateTestkitFactory({
     wrapper: document.body,
     dataHook,
+  });
+
+const stickyActionCellDataHook = 'sticky-table-action-cell';
+
+const createTableActionCellDriver = () =>
+  uniTestkitFactoryCreator(TableActionCellPrivateDriverFactory)({
+    wrapper: document.body,
+    dataHook: stickyActionCellDataHook,
   });
 
 const getHorizontalScrollColumnContent = (columnIndex, rowIndex) =>
@@ -428,6 +442,41 @@ const tests = [
         },
         componentDidMount: () => {
           createDriver().scrollHorizontallyTo(200);
+        },
+      },
+      {
+        it: 'Should support sticky TableActionCell',
+        props: {
+          horizontalScroll: true,
+          showSelection: true,
+          stickyColumns: 2,
+          data: horizontalScrollData,
+          columns: horizontalScrollColumns.concat({
+            title: '',
+            width: 100,
+            stickyActionCell: true,
+            render: () => (
+              <TableActionCell
+                dataHook={stickyActionCellDataHook}
+                primaryAction={{ text: 'Edit', onClick: () => null }}
+                secondaryActions={[
+                  {
+                    dataHook: 'star-action',
+                    icon: <Star />,
+                    onClick: () => null,
+                    text: 'Star',
+                  },
+                ]}
+              />
+            ),
+          }),
+          isRowHighlight: (_, rowNum) => rowNum % 2 === 0,
+        },
+        componentDidMount: async () => {
+          const driver = createDriver();
+          // const stickyActionCellDriver = createTableActionCellDriver();
+          driver.scrollHorizontallyTo(99999);
+          // await stickyActionCellDriver.hover();
         },
       },
     ],

@@ -28,7 +28,16 @@ class TableStickyScrollExample extends React.Component {
         width: 100,
         stickyActionCell: true,
         render: () => (
-          <TableActionCell primaryAction={{ text: 'Edit' }} />
+          <TableActionCell
+            primaryAction={{ text: 'Edit' , onClick: () => null}}
+            secondaryActions={[
+              {
+                icon: <Icons.Star />,
+                onClick: () => null,
+                text: 'Star'
+              }
+            ]}
+    />
         )});
 
     return (
