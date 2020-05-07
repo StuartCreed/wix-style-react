@@ -64,6 +64,7 @@ function tableWithAllProps() {
           style: { font: '14px' },
           title: <span />,
           width: '10',
+          stickyActionCell: true,
         },
       ]}
     />
