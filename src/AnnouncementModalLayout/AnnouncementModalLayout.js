@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './AnnouncementModalLayout.st.css';
+import { st, classes } from './AnnouncementModalLayout.st.css';
 import BaseModalLayout from '../BaseModalLayout';
 import TextButton from '../TextButton';
 import { dataHooks } from './constants';
@@ -13,7 +13,7 @@ class AnnouncementModalLayout extends React.PureComponent {
     const { illustration } = this.props;
 
     return (
-      <div className={styles.imageWrapper}>
+      <div className={classes.imageWrapper}>
         {typeof illustration === 'string' ? (
           <img src={illustration} width="100%" height="100%" />
         ) : (
@@ -26,7 +26,7 @@ class AnnouncementModalLayout extends React.PureComponent {
   _renderLink() {
     const { linkText, linkOnClick, theme } = this.props;
     return (
-      <div className={styles.additionalButtons}>
+      <div className={classes.additionalButtons}>
         <TextButton
           size="small"
           weight="normal"
@@ -57,7 +57,7 @@ class AnnouncementModalLayout extends React.PureComponent {
     const transformedProps = this.transformProps();
 
     return (
-      <div {...styles('root', {}, this.props)} data-hook={dataHook}>
+      <div className={st(classes.root)} data-hook={dataHook}>
         {illustration && this._renderIllustration()}
         <BaseModalLayout
           {...this.props}
