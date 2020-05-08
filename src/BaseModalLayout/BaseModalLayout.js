@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Text from '../Text';
 import Button from '../Button';
-import styles from './BaseModalLayout.st.css';
+import { st, classes } from './BaseModalLayout.st.css';
 import { dataHooks } from './constants';
 import CloseButton from '../CloseButton';
 import Divider from '../Divider';
@@ -61,7 +61,7 @@ class BaseModalLayout extends React.PureComponent {
   _renderHeaderLayout = () => {
     const { title, subtitle } = this.props;
     return (
-      <div className={styles.header}>
+      <div className={classes.header}>
         {typeof title === 'string' ? (
           <Heading dataHook={dataHooks.title} appearance={'H3'}>
             {title}
@@ -91,12 +91,12 @@ class BaseModalLayout extends React.PureComponent {
     } = this.props;
     return (
       <>
-        <Divider className={styles.footerDivider} />
-        <div className={styles.actions}>
+        <Divider className={classes.footerDivider} />
+        <div className={classes.actions}>
           {sideActions && (
-            <div className={styles.sideActions}>{sideActions}</div>
+            <div className={classes.sideActions}>{sideActions}</div>
           )}
-          <div className={styles.buttons}>
+          <div className={classes.buttons}>
             {secondaryButtonText && (
               <Button
                 size="small"
@@ -142,19 +142,19 @@ class BaseModalLayout extends React.PureComponent {
       sideActions || primaryButtonText || secondaryButtonText || linkText;
 
     return (
-      <div {...styles('root', { removeContentPadding }, this.props)}>
+      <div className={st(classes.root, { removeContentPadding })}>
         {title && this._renderHeaderLayout()}
-        {children && <div className={styles.contentWrapper}>{children}</div>}
+        {children && <div className={classes.contentWrapper}>{children}</div>}
         {hasFooter && this._renderFooterLayout()}
         {footnote && (
           <>
             <Divider />
-            <div className={styles.footnote}>{footnote}</div>
+            <div className={classes.footnote}>{footnote}</div>
           </>
         )}
         <CloseButton
           dataHook={dataHooks.closeButton}
-          className={styles.closeButton}
+          className={classes.closeButton}
           onClick={onCloseButtonClick}
           size="large"
           skin="dark"
